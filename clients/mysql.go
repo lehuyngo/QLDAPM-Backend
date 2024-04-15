@@ -2,9 +2,7 @@ package clients
 
 import (
 	"fmt"
-	"os"
 
-	"github.com/spf13/viper"
 	"gitlab.tgl-cloud.com/dx-ecosystem/crm/entities"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -15,22 +13,26 @@ import (
 var MySQLClient *gorm.DB
 
 func NewMySQLClient() (*gorm.DB, error) {
-	username := os.Getenv("CRM_DATABASE_USERNAME")
-	password := os.Getenv("CRM_DATABASE_PASSWORD")
-	addr := os.Getenv("CRM_DATABASE_ADDRESS")
-	dbname := os.Getenv("CRM_DATABASE_DBNAME")
-	if username == "" {
-		username = viper.GetString("database.username")
-	}
-	if password == "" {
-		password = viper.GetString("database.password")
-	}
-	if addr == "" {
-		addr = viper.GetString("database.address")
-	}
-	if dbname == "" {
-		dbname = viper.GetString("database.dbname")
-	}
+	// username := os.Getenv("CRM_DATABASE_USERNAME")
+	// password := os.Getenv("CRM_DATABASE_PASSWORD")
+	// addr := os.Getenv("CRM_DATABASE_ADDRESS")
+	// dbname := os.Getenv("CRM_DATABASE_DBNAME")
+	// if username == "" {
+	// 	username = viper.GetString("database.username")
+	// }
+	// if password == "" {
+	// 	password = viper.GetString("database.password")
+	// }
+	// if addr == "" {
+	// 	addr = viper.GetString("database.address")
+	// }
+	// if dbname == "" {
+	// 	dbname = viper.GetString("database.dbname")
+	// }
+	addr:= "127.0.0.1:33061"
+	dbname:= "crmdb"
+	username := "root"
+	password:= "123456"
 
 	connStr := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=True",
 		username, password, addr, dbname)
