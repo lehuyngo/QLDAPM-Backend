@@ -1,0 +1,12 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNi0yNlQxMDozMzowMi4wNDc1NDErMDc6MDAiLCJ1c2VyX2lkIjo5fQ.W9bvbOPDy3RbGKs0UxWrQXU_3ZxvTY0MY1oiCPlpHYQ
+@mail = mails
+
+###########
+# MAIL #
+###########
+# Detail
+GET http://{{host}}/api/v1/{{mail}}/efde2257-6761-4d9e-82cb-963326c766c3 HTTP/1.1
+{{token}}
+###

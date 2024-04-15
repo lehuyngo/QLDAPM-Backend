@@ -1,0 +1,2 @@
+curl -o ./sfile.pdf http://localhost:3002/api/v1/clients/441c7f84-3d41-490f-8810-104ae2548d1f/downloaded-files/ae78915e-5277-4d8c-8d8d-cf1f3d400e2c/logo_1.jpeg \
+    -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U"

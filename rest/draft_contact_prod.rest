@@ -1,0 +1,28 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNi0wNlQyMjo1NjoyNC42NTYxMjQwMjdaIiwidXNlcl9pZCI6Nn0.yf-60aPd_ZCH0OwbFJ5IIdVPKXf2KjdCjcNpin_4WRc
+@draft-contact = draft-contacts
+
+#################
+# DRAFT CONTACT #
+#################
+
+### List
+GET https://sky-crm.click/api/v1/{{draft-contact}} HTTP/1.1
+{{token}}
+###
+
+### Detail
+GET https://sky-crm.click/api/v1/{{draft-contact}}/5d7ebc78-56e7-40a2-b2d7-5d090b2ff454 HTTP/1.1
+{{token}}
+###
+
+### Delete
+DELETE https://sky-crm.click/api/v1/{{draft-contact}}/5d7ebc78-56e7-40a2-b2d7-5d090b2ff454 HTTP/1.1
+{{token}}
+###
+
+### Restore deleted draft contacts
+POST https://sky-crm.click/api/v1/restored-draft-contacts HTTP/1.1
+{{token}}
+###

@@ -1,0 +1,16 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@client = clients
+@tag = tags
+@client-uuid = b5d5dc1b-bf0d-4bc5-a9b4-5e73ae2fedec
+
+###########
+# CLIENT TAG ACTIVITIES #
+###########
+
+###
+# Read List
+GET http://{{host}}/api/v1/clients/{{client-uuid}}/tag_activities HTTP/1.1
+{{token}}
+###

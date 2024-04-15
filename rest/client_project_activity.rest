@@ -1,0 +1,14 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNi0xN1QwODoxNzozNi4wOTQyMzEzKzA3OjAwIiwidXNlcl9pZCI6MX0.c_SPjkikP-KRxn7FmvHgz-hUQ1keSHYO3byL9VwaSn0
+@client = clients
+@clients-uuid = c99828ff-5ff6-4ff1-b09a-7f9815cca560
+###########
+# CLIENT PROJECT ACTIVITIES #
+###########
+
+###
+# Read List
+GET http://{{host}}/api/v1/clients/{{clients-uuid}}/project_activities HTTP/1.1
+{{token}}
+###

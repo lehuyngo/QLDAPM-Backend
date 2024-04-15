@@ -1,0 +1,17 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@task = tasks
+@file = files
+@task-uuid = 5f42a4ee-0aef-47c8-8e82-6e6d2d87f157
+@file-uuid = 1c2a4b23-fd7a-4452-b1cb-edb32fc67f60
+
+###########
+# TASK ATTACH FILES #
+###########
+
+###
+# Delete
+DELETE http://{{host}}/api/v1/{{task}}/{{task-uuid}}/{{file}}/{{file-uuid}} HTTP/1.1
+{{token}}
+###

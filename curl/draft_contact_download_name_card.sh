@@ -1,0 +1,2 @@
+curl -o ./za.jpeg http://localhost:3002/api/v1/draft-contacts/e5989484-4ff7-4da3-97b4-de64142c7b92/name-card/b2a8e876-a9a8-4f81-a38d-ae6df6463c28 \
+    -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U"

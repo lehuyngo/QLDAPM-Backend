@@ -1,0 +1,1 @@
+scp -r ~/Downloads/skycrm_webapp root@171.244.62.206:/zserver/

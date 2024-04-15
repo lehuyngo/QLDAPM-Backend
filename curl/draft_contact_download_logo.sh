@@ -1,0 +1,2 @@
+curl -o ./za.png http://localhost:3002/api/v1/draft-contacts/dd9fff20-d436-4b23-82e5-0fcb349b33c5/company-logo/2d3ca31b-1f35-4da6-8704-6af931c44d66 \
+    -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U"

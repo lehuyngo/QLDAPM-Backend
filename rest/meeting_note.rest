@@ -1,0 +1,39 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@project= projects
+@project_uuid = 24c75496-d1f7-46f4-b15f-9a960545cb02 
+@meeting = meetings
+@meeting_uuid = 38bb77e4-2839-422e-abdd-80f1cfc3dbb0
+@note = meeting-notes
+@note_uuid = b3fd46c9-60a4-40bc-8821-7dfa6e8a94c8
+
+
+
+###########
+# MEETING NOTE #
+###########
+
+### List
+GET http://{{host}}/api/v1/{{project}}/{{project_uuid}}/{{note}} HTTP/1.1
+{{token}}
+###
+
+### Create
+POST http://{{host}}/api/v1/{{project}}/{{project_uuid}}/{{meeting}}/{{meeting_uuid}}/{{note}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"note":"Hello there","start_time":1703060331,"location":"DX","link":"abdc.com", "user_uuids":["8490ffc4-8f9f-4526-831f-4e8e7552eee6","8481bdc4-ec84-4a6f-8291-257a7fe86e21"],"contact_uuids":["43a21a29-350c-421a-bdca-554f4f5717ce","25b6c094-448e-4916-a15a-5b965caa4887"]}
+
+### Update
+PUT http://{{host}}/api/v1/{{project}}/{{project_uuid}}/{{note}}/{{note_uuid}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"note":"Hello zzz2","start_time":11111,"location":"DZZZZZZZZ","link":"zzz.com"}
+
+### Delete
+DELETE http://{{host}}/api/v1/{{project}}/{{project_uuid}}/{{note}}/{{note_uuid}} HTTP/1.1
+{{token}}
+

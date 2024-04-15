@@ -1,0 +1,35 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@client = clients
+@tag = tags
+@client-uuid = 472f147d-5ba1-41b2-966a-d38b997a7d16
+472f147d-5ba1-41b2-966a-d38b997a7d16
+405d6932-27a2-45d8-9e9d-60aac08e132c
+###########
+# CLIENT NOTES #
+###########
+
+### Create
+POST http://{{host}}/api/v1/{{client}}/{{client-uuid}}/{{tag}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"name":"Introduce 61","color":"0AFF03"}
+
+###
+# Delete
+DELETE http://{{host}}/api/v1/{{client}}/{{client-uuid}}/{{tag}}/078fc008-96a9-412b-8036-702e23e6276a HTTP/1.1
+{{token}}
+
+{"is_fully_deleted": 0}
+### List
+GET http://{{host}}/api/v1/client-tags HTTP/1.1
+{{token}}
+###
+
+###
+# Read Detail for search
+GET http://{{host}}/api/v1/client-tags/8055d447-c5e8-48d8-a144-150edd59288f HTTP/1.1
+{{token}}
+###

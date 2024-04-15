@@ -1,0 +1,14 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNjoyMjozOC45NDI3NjMrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.mAAp_Iu2vYpBKEZ37usr4-CK3R0KuTpJahHExk0zpY4
+@report = reports
+
+###########
+# READ MAIL TIMELINE #
+###########
+# Me
+POST http://{{host}}/api/v1/{{report}}/read-mail-timeline HTTP/1.1
+{{token}}
+
+{"time_ranges":[{"start_time":1702452522000,"end_time":1702538922000},{"start_time":1702452622000,"end_time":1702538622000}]}
+###

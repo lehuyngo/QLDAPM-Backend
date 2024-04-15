@@ -1,0 +1,40 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@project= projects
+@project_uuid = 24c75496-d1f7-46f4-b15f-9a960545cb02
+@meeting_note = meeting-notes
+@meeting_note_uuid = 2bcda80c-c301-4d51-9859-31897794ae93
+@note = notes
+@note_uuid = 9e7970fa-4db2-449e-af99-761498d064b1
+@highlight = highlights
+
+@batch_highlight = batch_highlights
+
+@highlight_uuid = 52c143d4-2a7a-429b-8622-1b1bd4d39803
+
+
+
+#############
+# Highlight #
+#############
+
+### List
+GET http://{{host}}/api/v1/{{project}}/{{project_uuid}}/{{highlight}} HTTP/1.1
+{{token}}
+###
+
+### Create
+POST http://{{host}}/api/v1/{{meeting_note}}/{{meeting_note_uuid}}/{{highlight}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"titles":["test12","test2","test3","d2tdb"]}
+### Delete
+DELETE http://{{host}}/api/v1/{{meeting_note}}/{{meeting_note_uuid}}/{{highlight}}/{{highlight_uuid}} HTTP/1.1
+{{token}}
+### Delete batch
+DELETE http://{{host}}/api/v1/{{meeting_note}}/{{meeting_note_uuid}}/{{batch_highlight}} HTTP/1.1
+{{token}}
+
+{"uuids":["6b35b727-d08f-4542-9a0c-090c220179ca","754196f8-39b3-48e5-98ae-7749816c1337"]}

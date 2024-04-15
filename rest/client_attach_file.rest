@@ -1,0 +1,23 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@client = clients
+@file = files
+@client-uuid = 441c7f84-3d41-490f-8810-104ae2548d1f
+
+###########
+# CLIENT NOTES #
+###########
+
+### Create
+GET http://{{host}}/api/v1/{{client}}/{{client-uuid}}/{{file}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+###
+# Delete
+DELETE http://{{host}}/api/v1/{{client}}/{{client-uuid}}/{{file}}/b97662b6-207a-46b2-a390-d26cbe47ab6b HTTP/1.1
+{{token}}
+###
+
+### List

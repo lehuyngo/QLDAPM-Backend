@@ -1,0 +1,40 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@contact = contacts
+@client = clients
+@contact-uuid = 8f09c853-93ef-4b76-a0e2-9de815aee980
+
+###########
+# CONTACT CLIENTS #
+###########
+
+### Create New Client For Contact
+POST http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{client}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"new_client":{"fullname":"DEF Company","website":"nam@gmail.com"}}
+
+###
+
+### Create Exist Create For Contact
+POST http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{client}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"uuids":["b5d5dc1b-bf0d-4bc5-a9b4-5e73ae2fedec","b5d5dc1b-bf0d-4bc5-a9b4-5e73ae2fedec","441c7f84-3d41-490f-8810-104ae2548d1f"]}
+
+###
+
+### List
+GET http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{client}} HTTP/1.1
+{{token}}
+###
+
+###
+
+# Delete Client From Contact
+DELETE http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{client}}/1b423682-1b5b-435d-a435-e56fb5010ca4 HTTP/1.1
+{{token}}
+###

@@ -1,0 +1,13 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUZ2xDb2RlIjoiMDAwMCIsIkVtYWlsIjoidGhvYWJhb2RhbmdAZ21haWwuY29tIiwiRnVsbE5hbWUiOiJBZG1pbiAxMjEiLCJTaG9ydE5hbWUiOiJhZG1pbiBuw6giLCJSb2xlQ29kZSI6IjAwIiwiQ29tcGFueUNvZGUiOiIwMCIsIklzTWFuYWdlciI6IlRydWUiLCJMdW5jaEJyZWFrSG91cnMiOiIxLjI1IiwiUm9sZU5hbWVGdWxsIjoiQWRtaW4iLCJSb2xlTmFtZVNob3J0IjoiQWRtaW4iLCJBZmZpbGlhdGlvbk5hbWVGdWxsIjoiVEdMIFNvbHV0aW9ucyIsIk1hbmFnZXJDb2RlIjoiMTkwMCIsIkpvaW5lZEF0IjoiMjAxOTA3MDEiLCJGdWxsVGltZUF0IjoiMjAxOTA3MDEiLCJBdmF0YXJMaW5rIjoiMjAyMzEwMTYxOTU0MDYucG5nIiwiSXNOZXdDb21lciI6IkZhbHNlIiwiSXNBZG1pbiI6InRydWUiLCJleHAiOjIwMTkyMDQ0NjIsImlzcyI6Imh0dHBzOi8vdGdsLXNvbC5jb20vIiwiYXVkIjoianMuYXBwLmNvbSJ9.6w_8rYbRurogr1V9wRj3rDAPrQ8e8bR0ND-yNK0Aous
+@batch-mail = batch-mails
+
+###########
+# MEETING #
+###########
+
+### List
+GET http://{{host}}/api/v1/{{batch-mail}} HTTP/1.1
+{{token}}
+###

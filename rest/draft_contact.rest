@@ -1,0 +1,28 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@draft-contact = draft-contacts
+
+#################
+# DRAFT CONTACT #
+#################
+
+### List
+GET http://{{host}}/api/v1/{{draft-contact}} HTTP/1.1
+{{token}}
+###
+
+### Detail
+GET http://{{host}}/api/v1/{{draft-contact}}/552dcf04-6fe8-48fb-b214-abcc7eab11d8 HTTP/1.1
+{{token}}
+###
+
+### Delete
+DELETE http://{{host}}/api/v1/{{draft-contact}}/552dcf04-6fe8-48fb-b214-abcc7eab11d8 HTTP/1.1
+{{token}}
+###
+
+### Restore deleted draft contacts
+POST http://{{host}}/api/v1/restored-draft-contacts HTTP/1.1
+{{token}}
+###

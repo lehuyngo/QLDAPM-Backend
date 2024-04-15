@@ -1,0 +1,40 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@contact = contacts
+@project = projects
+@contact-uuid = 8f09c853-93ef-4b76-a0e2-9de815aee980
+
+###########
+# CONTACT PROJECTS #
+###########
+
+### Create New Project For Contact
+POST http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{project}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"new_project":{"fullname":"C1-Project ABC","shortname":"C1-ABC","code":"C1-789"}}
+
+###
+
+### Add Exist Project For Contact
+POST http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{project}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"uuids":["7ec99429-5147-4097-a351-b44a7f278909","91e9c967-bb2b-4ebf-8c61-6c27f9a7d9cc"]}
+
+###
+
+### List Project of Contact
+GET http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{project}} HTTP/1.1
+{{token}}
+###
+
+###
+
+# Delete Project From Contact
+DELETE http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{project}}/c4dacf61-4929-4351-acd4-14b2422903de HTTP/1.1
+{{token}}
+###

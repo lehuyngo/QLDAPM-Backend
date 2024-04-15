@@ -1,0 +1,40 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@contact = contacts
+@note = notes
+@contact-uuid = b168a4b2-8169-4e9b-b160-be1c7d5e5f85
+
+###########
+# CLIENT NOTES #
+###########
+
+### Create
+POST http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{note}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"title":"Title 16","content":"Content 16","color":"Color 16"}
+
+### Detail
+GET http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{note}}/2de2492b-6b08-42ee-a26f-d5b91b9864a8 HTTP/1.1
+{{token}}
+###
+
+### List
+GET http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{note}} HTTP/1.1
+{{token}}
+###
+
+### Update
+PUT http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{note}}/0ca944dd-b23d-4932-9df7-3f621a86dd16 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"title":"Title 22","content":"Content 22","color":"Color 22"}
+
+###
+# Delete
+DELETE http://{{host}}/api/v1/{{contact}}/{{contact-uuid}}/{{note}}/0ca944dd-b23d-4932-9df7-3f621a86dd16 HTTP/1.1
+{{token}}
+###

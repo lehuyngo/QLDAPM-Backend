@@ -1,0 +1,16 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNi0xOFQxMTowNTowMy4zMjUxOTI0KzA3OjAwIiwidXNlcl9pZCI6MX0.-AwzoH61HOBj1zczqp8xPbQ6A6yNnMd762R8uRpPvOo
+@client = clients
+@client_uuid = 368d53f1-c463-4c5d-9223-da78da8485e1
+
+###########
+# Contact activity #
+###########
+
+### Create
+### List
+GET http://{{host}}/api/v1/{{client}}/{{client_uuid}}/client_activities HTTP/1.1
+{{token}}
+###
+

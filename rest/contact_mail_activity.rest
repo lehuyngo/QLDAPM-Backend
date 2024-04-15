@@ -1,0 +1,16 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@contact = contacts
+@tag = tags
+@contact-uuid = 86ba5e71-a149-4b35-bd17-efd670c3b13e
+
+###########
+# CONTACT MAIL ACTIVITIES #
+###########
+
+###
+# Read List
+GET http://{{host}}/api/v1/contacts/{{contact-uuid}}/mail_activities HTTP/1.1
+{{token}}
+###

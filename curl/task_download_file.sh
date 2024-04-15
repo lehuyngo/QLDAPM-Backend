@@ -1,0 +1,2 @@
+curl -o ./text111.txt http://localhost:3002/api/v1/tasks/1226dfce-791e-40a4-9e06-6cd9e493a11d/downloaded-files/4b11024c-320f-4a61-9fcc-8db8d5aabd57/text.txt \
+    -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U"

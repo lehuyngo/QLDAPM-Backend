@@ -1,0 +1,51 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@client = clients
+@deleted-client = deleted-clients
+
+###########
+# CLIENT #
+###########
+
+### Create
+POST http://{{host}}/api/v1/{{client}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"fullname":"Fullname 1000","shortname":"Shortname 1000","code":"Code 1000","fax":"Fax 1000","website":"Website 1000","phone":"Phone 1000","email":"Email 1000","company_size":"Company Size 1000","address":"Address 1000"}
+
+### Update
+PUT http://{{host}}/api/v1/{{client}}/af9bbc4e-a898-4baa-aa6c-5eb63c35ad95 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"fullname":"Fullname 21","shortname":"Shortname 3","code":"Code 3","fax":"Fax 3","website":"Website 3","phone":"Phone 3","email":"Email 3","company_size":"Company Size 3"}
+
+### Detail
+GET http://{{host}}/api/v1/{{client}}/b5d5dc1b-bf0d-4bc5-a9b4-5e73ae2fedec HTTP/1.1
+{{token}}
+###
+
+### List
+GET http://{{host}}/api/v1/{{client}} HTTP/1.1
+{{token}}
+###
+
+### Read
+DELETE http://{{host}}/api/v1/{{client}}/b5d5dc1b-bf0d-4bc5-a9b4-5e73ae2fedec HTTP/1.1
+{{token}}
+###
+###
+
+################
+### IN TRASH ###
+################
+POST http://{{host}}/api/v1/{{deleted-client}}/3328ab53-4a3e-42b5-adb8-ce8fe5789e42 HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{deleted-client}}/3328ab53-4a3e-42b5-adb8-ce8fe5789e42 HTTP/1.1
+{{token}}
+###

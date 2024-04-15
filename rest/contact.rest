@@ -1,0 +1,36 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@contact = contacts
+@deleted-contact = deleted-contacts
+
+###########
+# CONTACT #
+###########
+
+### Detail
+GET http://{{host}}/api/v1/{{contact}}/cc1fbbc1-d4f3-46f8-83d9-27c7bf25cb02 HTTP/1.1
+{{token}}
+###
+
+### List
+GET http://{{host}}/api/v1/{{contact}} HTTP/1.1
+{{token}}
+###
+
+### Delete
+DELETE http://{{host}}/api/v1/{{contact}}/0a11a1c0-e3e8-40ad-b526-23b0b9084fde HTTP/1.1
+{{token}}
+###
+
+################
+### IN TRASH ###
+################
+POST http://{{host}}/api/v1/{{deleted-contact}}/0a11a1c0-e3e8-40ad-b526-23b0b9084fde HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{deleted-contact}}/0a11a1c0-e3e8-40ad-b526-23b0b9084fde HTTP/1.1
+{{token}}
+###

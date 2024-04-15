@@ -1,0 +1,49 @@
+@port = 3002
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUR0wgU29sdXRpb25zIiwiZXhwIjoiMjAyNC0wNS0xMlQxNzo1Nzo0My40MTgyNzQrMDc6MDAiLCJ1c2VyX2lkIjo5fQ.D-WNe7osPWv9IO8T-Op0pPeqKilM4WHPia5KVlK0C5U
+@note = meeting-notes
+@note_uuid = af7694e6-fb1f-4625-8f69-d0ed9d4c7182
+@contributor = contributors
+@contributor_uuid = 2a1a312a-5f33-4ae6-bfb4-3cce54c0e1a3
+@batch_contributor = batch-contributors
+
+
+
+###########
+# CONTRIBUTOR #
+###########
+
+
+### Create batch contributors
+POST http://{{host}}/api/v1/{{note}}/{{note_uuid}}/{{batch_contributor}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"user_uuids":["f459c518-31be-4eba-97e6-62c70cad2c44","8481bdc4-ec84-4a6f-8291-257a7fe86e21"],
+"contact_uuids":["86ba5e71-a149-4b35-bd17-efd670c3b13e"]}
+
+### Delete batch contributors
+DELETE http://{{host}}/api/v1/{{note}}/{{note_uuid}}/{{batch_contributor}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"uuids":["e0a7d471-4093-446c-930f-9719cc17276f"]}
+
+### Create user contributor
+POST http://{{host}}/api/v1/{{note}}/{{note_uuid}}/{{contributor}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"user_uuid":"f459c518-31be-4eba-97e6-62c70cad2c44"}
+
+### Create contact contributor
+POST http://{{host}}/api/v1/{{note}}/{{note_uuid}}/{{contributor}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"contact_uuid":"86ba5e71-a149-4b35-bd17-efd670c3b13e"}
+
+### Delete
+DELETE http://{{host}}/api/v1/{{note}}/{{note_uuid}}/{{contributor}}/{{contributor_uuid}} HTTP/1.1
+{{token}}
+
