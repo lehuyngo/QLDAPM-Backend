@@ -75,20 +75,8 @@ func (h Handler) CreateMeeting(c *gin.Context) {
 		})
 	}
 
-	contactList, err := h.Contact.ListByUUIDs(ctx, req.ContactUUIDs)
-	if err != nil {
-		log.For(c).Error("[create-meeting] list contacts failed", log.Field("user_id", userID), log.Field("contact_uuids", req.ContactUUIDs), log.Err(err))
-
-		c.JSON(http.StatusInternalServerError, err)
-		return
-	}
-	for _, val := range contactList {
-		data.Attendees = append(data.Attendees, &entities.Attendee{
-			UUID:      uuid.NewString(),
-			ContactID: val.GetID(),
-			CreatedBy: userID,
-		})
-	}
+	
+	
 
 	_, err = h.Meeting.Create(ctx, data)
 	if err != nil {

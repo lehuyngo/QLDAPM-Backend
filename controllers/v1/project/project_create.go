@@ -71,7 +71,7 @@ func (h Handler) CreateProject(c *gin.Context) {
 
 	if req.IsContactValid() {
 		if req.Contact.UUID != "" {
-			contact, err = h.Contact.ReadByUUID(ctx, req.Contact.UUID)
+			
 			if err != nil {
 				log.For(c).Error("[create-project] query contact by uuid failed", log.Field("user_id", userID), log.Field("contact_uuid", req.Contact.UUID), log.Err(err))
 				if client != nil {
@@ -98,7 +98,7 @@ func (h Handler) CreateProject(c *gin.Context) {
 				LastActiveTime: time.Now().UnixMilli(),
 				Birthday: req.Contact.BirthDay,
 			}
-			_, err = h.Contact.Create(ctx, contact)
+			
 			if err != nil {
 				log.For(c).Error("[create-project] create contact failed", log.Field("user_id", userID), log.Err(err))
 				if client != nil {
@@ -141,18 +141,12 @@ func (h Handler) CreateProject(c *gin.Context) {
 		return
 	}
 
-	err = h.ContactProject.Add(ctx, &entities.ContactProject{
-		ContactID: contact.ID,
-		ProjectID: data.ID,
-		CreatedBy: userID,
-	})
+
 	if err != nil {
 		if client != nil {
 			h.Client.Delete(ctx, user.ID, client.ID)
 		}
-		if contact != nil {
-			h.Contact.Delete(ctx,user.ID, contact.ID)
-		}
+		
 		h.Project.Delete(ctx, projectID)
 
 		log.For(c).Error("[create-project] add project contact failed", log.Field("user_id", userID), log.Err(err))

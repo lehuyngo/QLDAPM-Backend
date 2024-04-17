@@ -81,7 +81,7 @@ func InitServices() {
 
 	initUploaders()
 
-	StartMailQueue()
+
 
 	fmt.Printf("INFO: Config.Domain %s \n", Config.Domain)
 }

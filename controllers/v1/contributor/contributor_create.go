@@ -50,57 +50,18 @@ func (h Handler) CreateContributor(c *gin.Context) {
 		return
 	}
 
-	contactUUID := req.ContactUUID
+	
 	contributorUserUUID := req.UserUUID
 
-	if contactUUID == "" && contributorUserUUID == "" {
-		log.For(c).Error("[create-contributor] contact uuid and user uuid is empty", log.Field("user_id", userID))
-		c.JSON(http.StatusBadRequest, err)
-		return
-	}
-
-	if contactUUID != "" && contributorUserUUID != "" {
-		log.For(c).Error("[create-contributor] only one uuid is allowed", log.Field("user_id", userID))
-		c.JSON(http.StatusBadRequest, err)
-		return
-	}
-
-	for _, contributor := range note.GetContributors() {
-		if contactUUID != "" && contributor.GetContact() != nil && contributor.GetContact().GetUUID() == contactUUID {
-			log.For(c).Error("[create-contributor] contact is already exist", log.Field("user_id", userID), log.Field("contact_uuid", contactUUID))
-			c.JSON(http.StatusOK, nil)
-			return
-		}
-
-		if contributorUserUUID != "" && contributor.GetUser() != nil && contributor.GetUser().GetUUID() == contributorUserUUID {
-			log.For(c).Error("[create-contributor] user is already exist", log.Field("user_id", userID), log.Field("user_uuid", contributorUserUUID))
-			c.JSON(http.StatusOK, nil)
-			return
-		}
-	}
+	
+	
 
 	data := &entities.Contributor{
 		MeetingNoteID: note.ID,
 		CreatedBy:     user.ID,
 	}
 
-	if contactUUID != "" {
-		contact, err := h.Contact.ReadByUUID(ctx, contactUUID)
-		if err != nil {
-			log.For(c).Error("[create-contributor] query contact by uuid failed", log.Field("user_id", userID), log.Field("contact_uuid", contactUUID))
-			c.JSON(http.StatusInternalServerError, err)
-			return
-		}
-
-		if user.OrganizationID != contact.OrganizationID {
-			log.For(c).Error("[create-contributor] user and contact organization is not match", log.Field("user_id", userID), log.Field("contact_uuid", contactUUID),
-				log.Field("user_organization_id", user.OrganizationID), log.Field("contact_organization_id", contact.OrganizationID))
-			c.JSON(http.StatusForbidden, nil)
-			return
-		}
-		data.ContactID = contact.ID
-	}
-
+	
 	if contributorUserUUID != "" {
 		contributorUser, err := h.User.ReadByUUID(ctx, contributorUserUUID)
 		if err != nil {

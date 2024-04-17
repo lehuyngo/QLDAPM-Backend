@@ -7,7 +7,7 @@ type Handler struct {
 	Meeting           services.IMeeting
 	MeetingNote       services.IMeetingNote
 	Project           services.IProject
-	Contact           services.IContact
+
 	Contributor       services.IContributor
 	MeetingNoteEditor services.IMeetingNoteEditor
 }
@@ -18,7 +18,7 @@ func NewHandler() *Handler {
 		Meeting:           services.NewMeeting(),
 		MeetingNote:       services.NewMeetingNote(),
 		Project:           services.NewProject(),
-		Contact:           services.NewContact(),
+
 		Contributor:       services.NewContributor(),
 		MeetingNoteEditor: services.NewMeetingNoteEditor(),
 	}

@@ -60,7 +60,7 @@ func (h Handler) CreateContributorBatch(c *gin.Context) {
 		return
 	}
 
-	contacts, err := h.Contact.ListByUUIDs(ctx, contactUUIDs)
+	
 	if err != nil {
 		log.For(c).Error("[create-contributor-batch] query contacts by uuids failed", log.Field("user_id", userID), log.Field("contact_uuids", contactUUIDs))
 		c.JSON(http.StatusInternalServerError, err)
@@ -76,31 +76,7 @@ func (h Handler) CreateContributorBatch(c *gin.Context) {
 
 	data := []*entities.Contributor{}
 
-	for _, contributorContact := range contacts {
-		if contributorContact.OrganizationID != user.OrganizationID {
-			log.For(c).Error("[create-contributor-batch] organization is not match", log.Field("user_id", userID), log.Field("contact_uuid", contributorContact.UUID),
-				log.Field("user_organization_id", user.OrganizationID), log.Field("contact_organization_id", contributorContact.OrganizationID))
-			c.JSON(http.StatusForbidden, nil)
-			return
-		}
-
-		isExist := false
-		for _, contributor := range note.GetContributors() {
-			if contributor.GetContact() != nil && contributor.GetContact().GetUUID() == contributorContact.UUID {
-				isExist = true
-				break
-			}
-		}
-
-		if !isExist {
-			data = append(data, &entities.Contributor{
-				UUID:          uuid.NewString(),
-				MeetingNoteID: note.ID,
-				CreatedBy:     user.ID,
-				ContactID:     contributorContact.ID,
-			})
-		}
-	}
+	
 
 	for _, contributorUser := range users {
 		if contributorUser.OrganizationID != user.OrganizationID {

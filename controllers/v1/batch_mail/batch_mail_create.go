@@ -48,21 +48,13 @@ func (h Handler) CreateBatchMail(c *gin.Context) {
 	}
 
 	// Receiver list
-	contacts, err := h.Contact.ListByUUIDs(ctx, strings.Split(req.ReceiverContactUUIDs, ","))
+	
 	if err != nil {
 		log.For(c).Error("[create-batch-mail] query list contact failed", log.Field("user_id", userID), log.Err(err))
 		c.JSON(http.StatusInternalServerError, err)
 		return
 	}
-	for _, val := range contacts {
-		data.Receivers = append(data.Receivers, &entities.BatchMailReceiver{
-			UUID: uuid.NewString(),
-			ContactID: val.GetID(),
-			Email: val.Email,
-			Status: entities.MailWaiting,
-			CreatedBy: user.ID,
-		})
-	}
+	
 
 	// CC list
 	ccUsers, err := h.User.ListByUUIDs(ctx, strings.Split(req.CCUserUUIDs, ","))
@@ -118,7 +110,7 @@ func (h Handler) CreateBatchMail(c *gin.Context) {
 			continue
 		}
 
-		services.AddMailQueue(val.ID)
+		
 	}
 
 	log.For(c).Info("[create-batch-mail] process success", log.Field("user_id", userID), log.Field("uuid", data.UUID))

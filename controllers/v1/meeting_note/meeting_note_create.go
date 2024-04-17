@@ -90,21 +90,8 @@ func (h Handler) CreateMeetingNote(c *gin.Context) {
 		})
 	}
 
-	contactList, err := h.Contact.ListByUUIDs(ctx, req.ContactUUIDs)
-	if err != nil {
-		log.For(c).Error("[create-meeting-note] list contacts failed", log.Field("user_id", userID), log.Field("contact_uuids", req.ContactUUIDs), log.Err(err))
-
-		c.JSON(http.StatusInternalServerError, err)
-		return
-	}
-	for _, val := range contactList {
-		data.Contributors = append(data.Contributors, &entities.Contributor{
-			UUID:      uuid.NewString(),
-			ContactID: val.GetID(),
-			CreatedBy: userID,
-		})
-	}
-
+	
+	
 	data.Editors = append(data.Editors, &entities.MeetingNoteEditor{
 		UUID:      uuid.NewString(),
 		EditorID:  userID,

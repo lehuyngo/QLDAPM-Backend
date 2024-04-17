@@ -37,7 +37,7 @@ func (h Handler) ListClientContactActivity(c *gin.Context) {
 		return
 	}
 
-	data, err := h.ClientContactActivity.List(ctx, client.ID)
+	
 	if err != nil {
 		log.For(c).Error("[list-client-contact-activity] query database info failed", log.Field("user_id", userID), log.Err(err))
 		c.JSON(http.StatusInternalServerError, err)
@@ -45,26 +45,7 @@ func (h Handler) ListClientContactActivity(c *gin.Context) {
 	}
 
 	resp := &apis.ListActivityClientContact{}
-	for _, val := range data {
-		if val.GetClient() == nil {
-			log.For(c).Error("[list-client-contact-activity] query client info failed", log.Field("user_id", userID), log.Field("client_uuid", clientUUID), log.Err(err))
-			continue
-		}
-		resp.Data = append(resp.Data, &apis.ClientContactActivity{
-			Type: apis.ActivityType(val.Type),
-			Creator: &apis.User{
-				UUID:        val.GetCreator().GetUUID(),
-				DisplayName: val.GetCreator().GetDisplayName(),
-			},
-			Contact: &apis.Contact{
-				UUID:      val.GetContact().GetUUID(),
-				FullName:  val.GetContact().GetFullName(),
-				ShortName: val.GetContact().GetShortName(),
-			},
-			CreatedTime: val.CreatedAt.UnixMilli(),
-
-		})
-	}
+	
 	sort.Slice(resp.Data, func(i, j int) bool {
 		return resp.Data[i].CreatedTime < resp.Data[j].CreatedTime
 	})
